@@ -11,7 +11,7 @@ public class AppConstants {
     public static final String APP_DESCRIPTION = "Cross-platform PDF signer for Windows Certificate Store, PKCS#11/HSM, and PFX files.";
 
     public static final String APP_AUTHOR = "CodeMuni";
-    public static final String APP_WEBSITE = "https://github.com/devcodemuni/eMark.git";
+    public static final String APP_WEBSITE = "https://devcodemuni.github.io/eMark/";
     public static final String APP_LICENSE_URL = "https://github.com/devcodemuni/eMark/blob/main/LICENSE";
     public static final String LOGO_PATH = "/icons/logo.png";
 
