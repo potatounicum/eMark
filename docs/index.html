@@ -473,61 +473,138 @@
         }
     </style>
     <script>
-        // Intercept download button clicks and show a highlighted modal prompt
+        // Modern and professional download prompt with improved UX
         function showStarPrompt(event) {
             event.preventDefault();
             const originalHref = event.currentTarget.href;
-
-            console.log('Download button clicked:', originalHref);
+            let downloadProceeded = false;
 
             // Remove any existing prompt
-            document.querySelectorAll('.star-download-prompt').forEach(e => e.remove());
+            document.querySelectorAll('.download-prompt-overlay').forEach(e => e.remove());
 
-            // Create the highlighted prompt modal
-            const prompt = document.createElement('div');
-            prompt.className = 'star-download-prompt fixed inset-0 flex items-center justify-center z-[9999] bg-black bg-opacity-80 p-4';
-            prompt.innerHTML = `
-                <div class="relative bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-600 border-4 border-yellow-400 shadow-2xl rounded-3xl p-10 max-w-md w-full mx-4 animate__animated animate__fadeInDown">
-                    <h3 class="text-3xl font-extrabold text-white mb-4 text-center">⭐ Support eMark!</h3>
-                    <p class="text-lg text-yellow-100 mb-6 text-center">If you find eMark useful, please star it on GitHub before downloading.<br>It helps us grow and keeps the project free!</p>
-                    <div class="flex flex-col sm:flex-row gap-3 mb-4 justify-center">
-                        <a href="https://github.com/devcodemuni/eMark" target="_blank"
-                            class="px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-bold rounded-lg text-center transition-colors flex items-center justify-center gap-2 shadow-lg border-2 border-yellow-500">
-                            <i class="fas fa-star"></i> Star on GitHub
-                        </a>
-                        <button id="continue-download-btn"
-                            class="px-6 py-3 bg-indigo-700 hover:bg-indigo-600 text-white font-bold rounded-lg text-center transition-colors shadow-lg border-2 border-indigo-400">
-                            Continue Download
-                        </button>
-                    </div>
-                    <button id="close-star-prompt"
-                        class="absolute top-4 right-4 text-yellow-200 hover:text-white transition-colors text-2xl">
-                        <i class="fas fa-times"></i>
+            // Create the modal overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'download-prompt-overlay fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 opacity-0';
+            
+            // Create the modal content
+            overlay.innerHTML = `
+                <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-slate-700/50 w-full max-w-md overflow-hidden transform transition-all duration-300 scale-95" style="box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);">
+                    <!-- Close Button -->
+                    <button id="close-prompt" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1 rounded-full hover:bg-slate-700/50" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
+                    
+                    <!-- Header -->
+                    <div class="p-6 pb-0">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="bg-indigo-600/20 p-3 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-center text-white mb-2">Thank You for Choosing eMark</h3>
+                        <p class="text-slate-300 text-center text-sm">We're excited you're giving eMark a try!</p>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6 pt-4">
+                        <div class="bg-slate-800/50 rounded-xl p-4 mb-6 border border-slate-700/50">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                If you find eMark useful, we'd be grateful if you could support us by starring the project on GitHub. Your support helps us continue development and keep eMark free for everyone.
+                            </p>
+                            <a href="https://github.com/devcodemuni/eMark" target="_blank" rel="noopener" 
+                               class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.201 22 16.425 22 12.017 22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                Star on GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="flex flex-col space-y-3">
+                            <button id="continue-download-btn" 
+                                class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200">
+                                Download Now
+                            </button>
+                            <button id="cancel-download-btn" 
+                                class="w-full bg-transparent hover:bg-slate-800 text-slate-300 font-medium py-2.5 px-4 rounded-lg border border-slate-700 hover:border-slate-600 transition-colors duration-200">
+                                Maybe Later
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="bg-slate-800/50 p-4 border-t border-slate-700/50">
+                        <p class="text-xs text-slate-400 text-center">
+                            eMark is open source and free to use. Your support helps us improve!
+                        </p>
+                    </div>
                 </div>
             `;
 
-            // Continue download if user clicks "Continue Download"
-            prompt.querySelector('#continue-download-btn').onclick = () => {
-                prompt.remove();
-                window.location.href = originalHref;
-            };
+            // Add overlay to body
+            document.body.appendChild(overlay);
+            
+            // Trigger animation
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                overlay.querySelector('div').style.transform = 'scale(1)';
+            }, 10);
 
-            // Allow download if user closes the prompt
-            prompt.querySelector('#close-star-prompt').onclick = () => {
-                prompt.remove();
-                window.location.href = originalHref;
-            };
-
-            // Allow click outside modal to close and proceed to download
-            prompt.addEventListener('click', (e) => {
-                if (e.target === prompt) {
-                    prompt.remove();
+            // Continue download handler
+            const continueDownload = () => {
+                if (downloadProceeded) return;
+                downloadProceeded = true;
+                
+                // Add exit animation
+                overlay.style.opacity = '0';
+                overlay.querySelector('div').style.transform = 'scale(0.95)';
+                
+                // Remove overlay after animation
+                setTimeout(() => {
+                    overlay.remove();
                     window.location.href = originalHref;
+                }, 300);
+            };
+
+            // Close handler
+            const closePrompt = () => {
+                if (downloadProceeded) return;
+                
+                // Add exit animation
+                overlay.style.opacity = '0';
+                overlay.querySelector('div').style.transform = 'scale(0.95)';
+                
+                // Remove overlay after animation
+                setTimeout(() => {
+                    overlay.remove();
+                }, 300);
+            };
+
+            // Event listeners
+            overlay.querySelector('#continue-download-btn').addEventListener('click', continueDownload);
+            overlay.querySelector('#close-prompt').addEventListener('click', closePrompt);
+            overlay.querySelector('#cancel-download-btn').addEventListener('click', closePrompt);
+            
+            // Close on overlay click (but not on modal content)
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closePrompt();
                 }
             });
-
-            document.body.appendChild(prompt);
+            
+            // Close on Escape key
+            const handleKeyDown = (e) => {
+                if (e.key === 'Escape') {
+                    closePrompt();
+                    document.removeEventListener('keydown', handleKeyDown);
+                }
+            };
+            
+            document.addEventListener('keydown', handleKeyDown);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
