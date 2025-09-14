@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Homepage -->
-    <url>
-        <loc>https://devcodemuni.github.io/eMark/</loc>
-        <lastmod>2025-09-06</lastmod>
-        <priority>1.0</priority>
-        <changefreq>weekly</changefreq>
-    </url>
 
-    <!-- Projects Page -->
-    <url>
-        <loc>https://devcodemuni.github.io/eMark/projects.html</loc>
-        <lastmod>2025-09-06</lastmod>
-        <priority>0.8</priority>
-        <changefreq>monthly</changefreq>
-    </url>
+  <url>
+    <loc>https://devcodemuni.github.io/eMark/</loc>
+    <lastmod>2025-09-06</lastmod>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
 
-    <!-- Convert these .md to .html when ready -->
-    <url>
-        <loc>https://devcodemuni.github.io/eMark/diagram.html</loc>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://devcodemuni.github.io/eMark/image-gallery.html</loc>
-        <priority>0.6</priority>
-    </url>
+  <url>
+    <loc>https://devcodemuni.github.io/eMark/projects.html</loc>
+    <lastmod>2025-09-06</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+
+  <!-- Downloads -->
+  <url>
+    <loc>https://github.com/devcodemuni/eMark/releases/download/V1.0.0/eMark-1.0.0.exe</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://github.com/devcodemuni/eMark/releases/download/V1.0.0/eMark-1.0.0.deb</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://github.com/devcodemuni/eMark/releases/download/V1.0.0/emark-v1.jar</loc>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
